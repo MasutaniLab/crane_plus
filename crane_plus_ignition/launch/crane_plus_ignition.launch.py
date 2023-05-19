@@ -63,20 +63,20 @@ def generate_launch_description():
             launch_arguments={'loaded_description': description}.items()
         )
 
-    spawn_joint_state_controller = ExecuteProcess(
-                cmd=['ros2 run controller_manager spawner.py joint_state_controller'],
+    spawn_joint_state_broadcaster = ExecuteProcess(
+                cmd=['ros2 run controller_manager spawner joint_state_broadcaster'],
                 shell=True,
                 output='screen',
             )
 
     spawn_arm_controller = ExecuteProcess(
-                cmd=['ros2 run controller_manager spawner.py crane_plus_arm_controller'],
+                cmd=['ros2 run controller_manager spawner crane_plus_arm_controller'],
                 shell=True,
                 output='screen',
             )
 
     spawn_gripper_controller = ExecuteProcess(
-                cmd=['ros2 run controller_manager spawner.py crane_plus_gripper_controller'],
+                cmd=['ros2 run controller_manager spawner crane_plus_gripper_controller'],
                 shell=True,
                 output='screen',
             )
@@ -93,7 +93,7 @@ def generate_launch_description():
         ign_gazebo,
         move_group,
         ignition_spawn_entity,
-        spawn_joint_state_controller,
+        spawn_joint_state_broadcaster,
         spawn_arm_controller,
         spawn_gripper_controller,
         bridge
